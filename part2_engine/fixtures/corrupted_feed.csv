@@ -1,0 +1,4 @@
+month,category,revenue,n_orders
+May,Ethnic Wear,-100.0,10
+May,Western Wear,invalid_number,5
+May,Kids Wear,5000.0,-2

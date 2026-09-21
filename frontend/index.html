@@ -1,0 +1,710 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Meesho Reseller Intelligence | Executive Command Center</title>
+  <meta name="description" content="Offline-first analytical pipeline and executive intelligence dashboard for reseller analytics, MoM growth engine, PII masking, and autonomous agent orchestration.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="app-layout">
+    <!-- Top Navigation Bar -->
+    <header class="top-nav">
+      <div class="nav-brand">
+        <div class="brand-logo">
+          <svg viewBox="0 0 32 32" width="28" height="28" fill="none">
+            <rect width="32" height="32" rx="8" fill="url(#brand-grad)" />
+            <path d="M9 22V10L16 16L23 10V22M16 16V22" stroke="#ffffff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+            <defs>
+              <linearGradient id="brand-grad" x1="0" y1="0" x2="32" y2="32" gradientUnits="userSpaceOnUse">
+                <stop stop-color="#9C27B0"/>
+                <stop offset="1" stop-color="#E91E63"/>
+              </linearGradient>
+            </defs>
+          </svg>
+        </div>
+        <div class="brand-titles">
+          <div class="brand-name">meesho <span>intelligence</span></div>
+          <div class="brand-sub">Offline Reseller Analytics & Autonomous Agent Hub</div>
+        </div>
+      </div>
+
+      <div class="system-pills">
+        <div class="status-pill" id="system-status-pill">
+          <span class="pulse-dot"></span>
+          <span id="system-status-text">System Ready</span>
+        </div>
+        <div class="meta-pill">
+          <span class="meta-label">DB:</span>
+          <span class="meta-val" id="db-status-badge">Connected</span>
+        </div>
+      </div>
+
+      <div class="nav-actions">
+        <button id="btn-run-all" class="btn btn-primary">
+          <span class="btn-icon">▶</span>
+          <span>Run Full Pipeline</span>
+        </button>
+        <button id="btn-regenerate" class="btn btn-secondary">
+          <span class="btn-icon">🔄</span>
+          <span>Regenerate Data</span>
+        </button>
+      </div>
+    </header>
+
+    <!-- Main Content Area -->
+    <main class="main-container">
+
+      <!-- Pipeline Execution Progress Ribbon -->
+      <section class="pipeline-stepper-card">
+        <div class="stepper-header">
+          <div class="stepper-title">
+            <h3>Pipeline Execution Flow</h3>
+            <p>5-Stage deterministic workflow from raw data seeding to autonomous agent decisioning</p>
+          </div>
+          <div class="stepper-actions">
+            <span id="pipeline-run-time" class="last-run-label">Ready</span>
+          </div>
+        </div>
+
+        <div class="stepper-nodes" id="stepper-nodes-container">
+          <!-- Step 1 -->
+          <div class="step-node" id="node-step1_data" data-step="step1_data">
+            <div class="step-node-header">
+              <span class="step-idx">01</span>
+              <span class="step-status-tag" id="tag-step1_data">Idle</span>
+            </div>
+            <div class="step-node-body">
+              <h4>Data Generation</h4>
+              <p>24 Resellers & 900 Orders (SQLite)</p>
+            </div>
+            <button class="step-run-btn" title="Run only Step 1" data-step-trigger="step1_data">▶</button>
+          </div>
+
+          <div class="step-connector"></div>
+
+          <!-- Step 2 -->
+          <div class="step-node" id="node-step2_sql" data-step="step2_sql">
+            <div class="step-node-header">
+              <span class="step-idx">02</span>
+              <span class="step-status-tag" id="tag-step2_sql">Idle</span>
+            </div>
+            <div class="step-node-body">
+              <h4>SQL Analytics</h4>
+              <p>5 Relational Queries & CSV Feeds</p>
+            </div>
+            <button class="step-run-btn" title="Run only Step 2" data-step-trigger="step2_sql">▶</button>
+          </div>
+
+          <div class="step-connector"></div>
+
+          <!-- Step 3 -->
+          <div class="step-node" id="node-step3_growth" data-step="step3_growth">
+            <div class="step-node-header">
+              <span class="step-idx">03</span>
+              <span class="step-status-tag" id="tag-step3_growth">Idle</span>
+            </div>
+            <div class="step-node-body">
+              <h4>Growth Engine</h4>
+              <p>MoM Shifts & Feed Validation</p>
+            </div>
+            <button class="step-run-btn" title="Run only Step 3" data-step-trigger="step3_growth">▶</button>
+          </div>
+
+          <div class="step-connector"></div>
+
+          <!-- Step 4 -->
+          <div class="step-node" id="node-step4_narrative" data-step="step4_narrative">
+            <div class="step-node-header">
+              <span class="step-idx">04</span>
+              <span class="step-status-tag" id="tag-step4_narrative">Idle</span>
+            </div>
+            <div class="step-node-body">
+              <h4>PII & Narratives</h4>
+              <p>SHA-256 Masking & Business Rules</p>
+            </div>
+            <button class="step-run-btn" title="Run only Step 4" data-step-trigger="step4_narrative">▶</button>
+          </div>
+
+          <div class="step-connector"></div>
+
+          <!-- Step 5 -->
+          <div class="step-node" id="node-step5_agent" data-step="step5_agent">
+            <div class="step-node-header">
+              <span class="step-idx">05</span>
+              <span class="step-status-tag" id="tag-step5_agent">Idle</span>
+            </div>
+            <div class="step-node-body">
+              <h4>Autonomous Agent</h4>
+              <p>Multi-Month Draft / Suppress / Escalate</p>
+            </div>
+            <button class="step-run-btn" title="Run only Step 5" data-step-trigger="step5_agent">▶</button>
+          </div>
+        </div>
+      </section>
+
+      <!-- Navigation Tabs -->
+      <nav class="process-tabs-nav">
+        <button class="tab-btn active" data-tab="tab-overview">
+          <span class="tab-icon">⚡</span>
+          <span>Overview & Live Console</span>
+        </button>
+        <button class="tab-btn" data-tab="tab-step1">
+          <span class="tab-icon">📦</span>
+          <span>1. Dataset & SQLite</span>
+        </button>
+        <button class="tab-btn" data-tab="tab-step2">
+          <span class="tab-icon">📊</span>
+          <span>2. SQL Analytics</span>
+        </button>
+        <button class="tab-btn" data-tab="tab-step3">
+          <span class="tab-icon">📈</span>
+          <span>3. Growth Engine</span>
+        </button>
+        <button class="tab-btn" data-tab="tab-step4">
+          <span class="tab-icon">🔒</span>
+          <span>4. PII Masking & Narratives</span>
+        </button>
+        <button class="tab-btn" data-tab="tab-step5">
+          <span class="tab-icon">🤖</span>
+          <span>5. Mock AI Agent</span>
+        </button>
+      </nav>
+
+      <!-- TAB 0: OVERVIEW & LIVE CONSOLE -->
+      <section class="tab-content active" id="tab-overview">
+        <!-- Quick Stats Cards -->
+        <div class="metrics-grid">
+          <div class="metric-card">
+            <div class="metric-icon purple">👥</div>
+            <div class="metric-content">
+              <span class="metric-title">Master Resellers</span>
+              <span class="metric-val" id="metric-resellers-count">24</span>
+              <span class="metric-sub">RS001 to RS024 (RS024 has 0 orders)</span>
+            </div>
+          </div>
+
+          <div class="metric-card">
+            <div class="metric-icon pink">🛍️</div>
+            <div class="metric-content">
+              <span class="metric-title">Total Orders (Q2)</span>
+              <span class="metric-val" id="metric-orders-count">900</span>
+              <span class="metric-sub">April (300), May (300), June (300)</span>
+            </div>
+          </div>
+
+          <div class="metric-card">
+            <div class="metric-icon blue">🏷️</div>
+            <div class="metric-content">
+              <span class="metric-title">Tracked Categories</span>
+              <span class="metric-val">5</span>
+              <span class="metric-sub">Ethnic, Western, Kids, Beauty, Home</span>
+            </div>
+          </div>
+
+          <div class="metric-card">
+            <div class="metric-icon green">🎯</div>
+            <div class="metric-content">
+              <span class="metric-title">Growth Threshold</span>
+              <span class="metric-val">±8.0%</span>
+              <span class="metric-sub">&gt;8% Flagged, ==8% Escalated</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Live Terminal Console -->
+        <div class="terminal-card">
+          <div class="terminal-header">
+            <div class="terminal-controls">
+              <span class="term-dot red"></span>
+              <span class="term-dot yellow"></span>
+              <span class="term-dot green"></span>
+              <span class="term-title">Live Execution Console & Process Stream</span>
+            </div>
+            <div class="terminal-actions">
+              <label class="autoscroll-toggle">
+                <input type="checkbox" id="chk-autoscroll" checked>
+                <span>Auto-scroll</span>
+              </label>
+              <button id="btn-clear-console" class="btn btn-xs">Clear Console</button>
+            </div>
+          </div>
+          <div class="terminal-body" id="console-output">
+            <div class="term-row info">
+              <span class="term-time">[00:00:00]</span>
+              <span class="term-level">[READY]</span>
+              <span class="term-msg">System initialized. Click "Run Full Pipeline" to execute all components.</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- TAB 1: DATASET & SQLITE DATABASE -->
+      <section class="tab-content" id="tab-step1">
+        <div class="section-banner">
+          <div class="banner-text">
+            <h2>Process 1: Deterministic Dataset & SQLite Database</h2>
+            <p>Generates 24 synthetic resellers across 4 regions with exact seed <code>SEED=42</code>. Reseller <code>RS024</code> is guaranteed to have 0 orders to benchmark SQL LEFT JOIN edge cases.</p>
+          </div>
+          <button class="btn btn-secondary" data-step-trigger="step1_data">Re-Run Process 1</button>
+        </div>
+
+        <div class="grid-2-col">
+          <!-- Monthly Order Breakdown -->
+          <div class="card">
+            <div class="card-header">
+              <h3>Monthly Order & Status Distribution</h3>
+              <span class="badge badge-purple">900 Total Orders</span>
+            </div>
+            <div class="card-body">
+              <div class="distribution-bars" id="orders-distribution-view">
+                <!-- Populated via JS -->
+              </div>
+              <div class="status-summary-grid" id="status-distribution-view">
+                <!-- Populated via JS -->
+              </div>
+            </div>
+          </div>
+
+          <!-- SQLite Schema Details -->
+          <div class="card">
+            <div class="card-header">
+              <h3>SQLite Relational Schema</h3>
+              <span class="badge badge-blue">data/meesho_reseller.db</span>
+            </div>
+            <div class="card-body">
+              <div class="code-block-display">
+                <pre><code>-- 1. Resellers Master Table
+CREATE TABLE resellers (
+    reseller_id TEXT PRIMARY KEY,
+    reseller_name TEXT NOT NULL,
+    region TEXT NOT NULL
+);
+
+-- 2. Orders Transactional Table
+CREATE TABLE orders (
+    order_id TEXT PRIMARY KEY,
+    reseller_id TEXT NOT NULL,
+    order_date TEXT NOT NULL,
+    category TEXT NOT NULL,
+    order_value REAL NOT NULL,
+    order_status TEXT NOT NULL,
+    FOREIGN KEY (reseller_id) REFERENCES resellers(reseller_id)
+);</code></pre>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Resellers Master Table Preview -->
+        <div class="card mt-4">
+          <div class="card-header">
+            <div class="header-with-search">
+              <h3>Resellers Master Data (24 Resellers)</h3>
+              <p class="subtitle">Notice <code>RS024</code> marked with Zero Orders</p>
+            </div>
+            <input type="text" id="reseller-search-input" class="table-search-box" placeholder="Filter resellers...">
+          </div>
+          <div class="card-body table-responsive">
+            <table class="data-table" id="resellers-table">
+              <thead>
+                <tr>
+                  <th>Reseller ID</th>
+                  <th>Raw Reseller Name (PII)</th>
+                  <th>Masked Identifier</th>
+                  <th>Region</th>
+                  <th>Order Status</th>
+                </tr>
+              </thead>
+              <tbody id="resellers-tbody">
+                <!-- Rendered by JS -->
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+
+      <!-- TAB 2: SQL ANALYTICS -->
+      <section class="tab-content" id="tab-step2">
+        <div class="section-banner">
+          <div class="banner-text">
+            <h2>Process 2: Relational SQL Analytics Engine</h2>
+            <p>Executes 5 enterprise SQL queries on SQLite, computing aggregated revenue, region performance, top sellers, zero-order LEFT JOIN nuances, and June AOV.</p>
+          </div>
+          <button class="btn btn-secondary" data-step-trigger="step2_sql">Re-Run Process 2</button>
+        </div>
+
+        <div class="sql-subtabs">
+          <button class="subtab-btn active" data-sqltab="sql-monthly">Query 1: Monthly Category Revenue</button>
+          <button class="subtab-btn" data-sqltab="sql-region">Query 2: Region Revenue</button>
+          <button class="subtab-btn" data-sqltab="sql-top">Query 3: Top 5 Resellers</button>
+          <button class="subtab-btn" data-sqltab="sql-zero">Query 4: Zero Orders (LEFT JOIN Demo)</button>
+          <button class="subtab-btn" data-sqltab="sql-aov">Query 5: June Delivered AOV</button>
+        </div>
+
+        <!-- Query 1 View -->
+        <div class="sql-tab-panel active" id="sql-monthly">
+          <div class="card">
+            <div class="card-header">
+              <div>
+                <h3>Monthly Category Revenue Breakdown</h3>
+                <p class="subtitle">Groups 900 orders across April, May, and June across all 5 retail categories</p>
+              </div>
+              <span class="badge badge-green">Output: monthly_category_revenue.csv</span>
+            </div>
+            <div class="card-body table-responsive">
+              <table class="data-table" id="table-sql-monthly">
+                <thead>
+                  <tr>
+                    <th>Month</th>
+                    <th>Category</th>
+                    <th>Revenue (₹)</th>
+                    <th>Order Count</th>
+                  </tr>
+                </thead>
+                <tbody><!-- JS --></tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+
+        <!-- Query 2 View -->
+        <div class="sql-tab-panel" id="sql-region">
+          <div class="card">
+            <div class="card-header">
+              <div>
+                <h3>Regional Performance Breakdown</h3>
+                <p class="subtitle">Computes total revenue and order volume per territory</p>
+              </div>
+              <span class="badge badge-purple">Output: region_revenue.csv</span>
+            </div>
+            <div class="card-body table-responsive">
+              <table class="data-table" id="table-sql-region">
+                <thead>
+                  <tr>
+                    <th>Region</th>
+                    <th>Total Revenue (₹)</th>
+                    <th>Orders Count</th>
+                  </tr>
+                </thead>
+                <tbody><!-- JS --></tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+
+        <!-- Query 3 View -->
+        <div class="sql-tab-panel" id="sql-top">
+          <div class="card">
+            <div class="card-header">
+              <div>
+                <h3>Top 5 Resellers (Delivered Revenue Only)</h3>
+                <p class="subtitle">Filters for <code>order_status = 'Delivered'</code> and orders by delivered revenue</p>
+              </div>
+              <span class="badge badge-blue">Output: top_resellers.csv</span>
+            </div>
+            <div class="card-body table-responsive">
+              <table class="data-table" id="table-sql-top">
+                <thead>
+                  <tr>
+                    <th>Reseller ID</th>
+                    <th>Reseller Name</th>
+                    <th>Region</th>
+                    <th>Delivered Revenue (₹)</th>
+                    <th>Delivered Orders</th>
+                  </tr>
+                </thead>
+                <tbody><!-- JS --></tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+
+        <!-- Query 4 View -->
+        <div class="sql-tab-panel" id="sql-zero">
+          <div class="card">
+            <div class="card-header">
+              <div>
+                <h3>Zero-Order Resellers & LEFT JOIN Nuance Demo</h3>
+                <p class="subtitle">
+                  Demonstrates why <code>COUNT(*)</code> returns 1 for unmatched rows while <code>COUNT(order_id)</code> correctly yields 0.
+                </p>
+              </div>
+              <span class="badge badge-amber">Outputs: zero_order_resellers.csv & zero_order_count_demo.csv</span>
+            </div>
+            <div class="card-body">
+              <div class="callout-box warning mb-4">
+                <strong>SQL Insight:</strong> When performing <code>resellers LEFT JOIN orders</code>, reseller <code>RS024</code> has no matching order rows.
+                A <code>COUNT(*)</code> evaluates the presence of the single outer-joined row and yields <code>1</code>.
+                In contrast, <code>COUNT(o.order_id)</code> inspects the nullable foreign key and correctly yields <code>0</code>.
+              </div>
+              <div class="table-responsive">
+                <table class="data-table" id="table-sql-zero-demo">
+                  <thead>
+                    <tr>
+                      <th>Reseller ID</th>
+                      <th>Reseller Name</th>
+                      <th>COUNT(*) Result</th>
+                      <th>COUNT(order_id) Result</th>
+                      <th>Observation</th>
+                    </tr>
+                  </thead>
+                  <tbody><!-- JS --></tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Query 5 View -->
+        <div class="sql-tab-panel" id="sql-aov">
+          <div class="card">
+            <div class="card-header">
+              <div>
+                <h3>June Delivered Average Order Value (AOV)</h3>
+                <p class="subtitle">Measures June fulfillment quality and average basket size</p>
+              </div>
+              <span class="badge badge-green">Output: june_aov.csv</span>
+            </div>
+            <div class="card-body table-responsive">
+              <table class="data-table" id="table-sql-aov">
+                <thead>
+                  <tr>
+                    <th>Target Month</th>
+                    <th>Delivered Revenue (₹)</th>
+                    <th>Delivered Orders</th>
+                    <th>Average Order Value (AOV)</th>
+                  </tr>
+                </thead>
+                <tbody><!-- JS --></tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- TAB 3: GROWTH ENGINE & FEED VALIDATION -->
+      <section class="tab-content" id="tab-step3">
+        <div class="section-banner">
+          <div class="banner-text">
+            <h2>Process 3: Growth Engine & Feed Integrity Validator</h2>
+            <p>Validates monthly CSV schema, checks mandatory categories, and computes Month-over-Month (MoM) revenue changes with robust zero-baseline protection.</p>
+          </div>
+          <button class="btn btn-secondary" data-step-trigger="step3_growth">Re-Run Process 3</button>
+        </div>
+
+        <!-- Feed Validation Status -->
+        <div class="card mb-4" id="feed-validation-card">
+          <div class="card-header">
+            <h3>Feed Integrity Validation Results</h3>
+            <span class="badge badge-green" id="feed-valid-pill">VALID</span>
+          </div>
+          <div class="card-body">
+            <div class="check-rules-grid">
+              <div class="rule-item checked">
+                <span class="rule-icon">✔</span>
+                <span class="rule-text">File exists and is non-empty</span>
+              </div>
+              <div class="rule-item checked">
+                <span class="rule-icon">✔</span>
+                <span class="rule-text">Required headers present: <code>month, category, revenue, n_orders</code></span>
+              </div>
+              <div class="rule-item checked">
+                <span class="rule-icon">✔</span>
+                <span class="rule-text">All 5 retail categories present</span>
+              </div>
+              <div class="rule-item checked">
+                <span class="rule-icon">✔</span>
+                <span class="rule-text">Non-negative numeric revenue & order quantities</span>
+              </div>
+            </div>
+            <div id="feed-errors-box" class="error-details-box" style="display: none;"></div>
+          </div>
+        </div>
+
+        <!-- MoM Calculations for May & June -->
+        <div class="grid-2-col">
+          <!-- May vs April -->
+          <div class="card">
+            <div class="card-header">
+              <div>
+                <h3>May vs April MoM Growth</h3>
+                <p class="subtitle">Comparing May revenue against April baseline</p>
+              </div>
+              <span class="badge badge-purple">Threshold: ±8.0%</span>
+            </div>
+            <div class="card-body table-responsive">
+              <table class="data-table" id="table-growth-may">
+                <thead>
+                  <tr>
+                    <th>Category</th>
+                    <th>Apr Rev (₹)</th>
+                    <th>May Rev (₹)</th>
+                    <th>MoM %</th>
+                    <th>Classification</th>
+                  </tr>
+                </thead>
+                <tbody><!-- JS --></tbody>
+              </table>
+            </div>
+          </div>
+
+          <!-- June vs May -->
+          <div class="card">
+            <div class="card-header">
+              <div>
+                <h3>June vs May MoM Growth</h3>
+                <p class="subtitle">Comparing June revenue against May baseline</p>
+              </div>
+              <span class="badge badge-blue">Threshold: ±8.0%</span>
+            </div>
+            <div class="card-body table-responsive">
+              <table class="data-table" id="table-growth-june">
+                <thead>
+                  <tr>
+                    <th>Category</th>
+                    <th>May Rev (₹)</th>
+                    <th>Jun Rev (₹)</th>
+                    <th>MoM %</th>
+                    <th>Classification</th>
+                  </tr>
+                </thead>
+                <tbody><!-- JS --></tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+
+        <!-- 3-State Rule Reference -->
+        <div class="card mt-4">
+          <div class="card-header">
+            <h3>3-State MoM Classification Policy</h3>
+          </div>
+          <div class="card-body">
+            <div class="state-rules-cards">
+              <div class="state-rule-card normal">
+                <div class="state-tag">NORMAL</div>
+                <div class="state-formula"><code>|MoM| &lt; 8.0%</code></div>
+                <p>Standard seasonal variance. Suppressed from high-priority executive alerts.</p>
+              </div>
+
+              <div class="state-rule-card flagged">
+                <div class="state-tag">FLAGGED</div>
+                <div class="state-formula"><code>|MoM| &gt; 8.0%</code> or <code>new_revenue</code></div>
+                <p>Significant shift. Eligible to be drafted for executive review (Top 3 prioritized).</p>
+              </div>
+
+              <div class="state-rule-card escalated">
+                <div class="state-tag">ESCALATED</div>
+                <div class="state-formula"><code>|MoM| == 8.0%</code></div>
+                <p>Boundary anomaly. Kept distinct from regular suppressed items for audit.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- TAB 4: PII MASKING & NARRATIVES -->
+      <section class="tab-content" id="tab-step4">
+        <div class="section-banner">
+          <div class="banner-text">
+            <h2>Process 4: PII Privacy Masking & Business Narratives</h2>
+            <p>Protects reseller privacy through deterministic hash masking (e.g. <code>Rajesh Kumar</code> → <code>Reseller R473</code>) and generates structured 3-part business narratives following Context → Insight → Implication.</p>
+          </div>
+          <button class="btn btn-secondary" data-step-trigger="step4_narrative">Re-Run Process 4</button>
+        </div>
+
+        <!-- Interactive Masking Sandbox -->
+        <div class="card mb-4">
+          <div class="card-header">
+            <h3>Interactive PII Masking Sandbox</h3>
+            <span class="badge badge-purple">Deterministic MD5 Hash</span>
+          </div>
+          <div class="card-body">
+            <div class="sandbox-controls">
+              <input type="text" id="mask-input" class="text-input" placeholder="Type a reseller name (e.g., 'Priya Sharma', 'Amit Patel')...">
+              <button id="btn-test-mask" class="btn btn-primary">Mask Reseller Name</button>
+            </div>
+            <div class="sandbox-result" id="mask-result-box" style="display: none;">
+              <div class="mask-output-pair">
+                <span class="label">Original PII:</span>
+                <span class="val" id="mask-original-val">-</span>
+              </div>
+              <div class="mask-output-arrow">➔</div>
+              <div class="mask-output-pair">
+                <span class="label">Deterministic Anonymized ID:</span>
+                <span class="val highlight" id="mask-result-val">-</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Generated Narratives -->
+        <div class="card">
+          <div class="card-header">
+            <h3>Generated Business Narratives (May Categories)</h3>
+            <span class="badge badge-green">Validated Structure</span>
+          </div>
+          <div class="card-body">
+            <div class="narratives-accordion" id="narratives-container">
+              <!-- Rendered by JS -->
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- TAB 5: AUTONOMOUS AI AGENT -->
+      <section class="tab-content" id="tab-step5">
+        <div class="section-banner">
+          <div class="banner-text">
+            <h2>Process 5: Autonomous Mock AI Agent Orchestration</h2>
+            <p>Emulates an autonomous analytics agent that runs feed validation, calculates MoM growth using Part 2 logic, sorts flagged categories by magnitude, drafts the Top 3 for human approval, and outputs structured JSON.</p>
+          </div>
+          <button class="btn btn-secondary" data-step-trigger="step5_agent">Re-Run Process 5</button>
+        </div>
+
+        <!-- Agent Scenario Selector -->
+        <div class="scenario-toggles mb-4">
+          <button class="scenario-btn active" data-scenario="may">May Scenario (May vs April)</button>
+          <button class="scenario-btn" data-scenario="june">June Scenario (June vs May)</button>
+        </div>
+
+        <!-- Agent Execution Summary Board -->
+        <div class="agent-board" id="agent-board-view">
+          <!-- Populated by JS -->
+        </div>
+
+        <!-- Agent Raw Structured JSON Payload -->
+        <div class="card mt-4">
+          <div class="card-header">
+            <h3>Autonomous Agent JSON Payload</h3>
+            <button class="btn btn-xs" id="btn-copy-json">Copy JSON</button>
+          </div>
+          <div class="card-body">
+            <div class="code-block-display">
+              <pre><code id="agent-json-code">{ "status": "Waiting for pipeline run..." }</code></pre>
+            </div>
+          </div>
+        </div>
+      </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="app-footer">
+      <div class="footer-left">
+        Meesho Reseller Intelligence Platform • Offline-First Architecture
+      </div>
+      <div class="footer-right">
+        <span>Python 3.13</span> • <span>SQLite 3</span> • <span>Deterministic Seed 42</span>
+      </div>
+    </footer>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
